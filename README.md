@@ -3,7 +3,7 @@ Simple Drawing Environment
 
 This project was made for my Cpsc 337 class (Intro to Web Graphics) 
 
-This web application is just javascript/SVG the UI is written in SVG and the controls are written in javascript.
+This web application is written in javascript/SVG. The UI is written in SVG and the controllers are written in javascript.
 
 Basics - 
 This is a drawing interface that allows you to draw and edit basic shapes (circles, ellipses, and squares) in svg.
