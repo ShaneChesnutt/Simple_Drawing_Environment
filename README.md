@@ -10,6 +10,3 @@ This is a drawing interface that allows you to draw and edit basic shapes (circl
 
 The way size tool works is click on a shape and then hover over one of the squares and use your mouse wheel to resize.
 
-BUGS - 
-Sizing issues with the screen. 
-Click events on the buttons (This is due to the svg text over the button).
