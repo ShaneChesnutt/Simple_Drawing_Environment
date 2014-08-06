@@ -1,5 +1,6 @@
 Simple Drawing Environment
 ----------------------------------
+Release 1.0.0
 
 This project was made for my Cpsc 337 class (Intro to Web Graphics)
 
