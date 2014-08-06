@@ -1,80 +1,80 @@
-canvas = document.getElementById("canvas");
+canvas = document.getElementById('canvas');
 var Shapes = [];
 
-drawingArea = document.getElementById("drawingArea");
+var drawingArea = document.getElementById('drawingArea');
 
-resizeshapes = document.getElementById("resizetool");
-boundingbox = false;
-resize_drag = false;
+var resizeshapes = document.getElementById("resizetool");
+var boundingbox = false;
+var resize_drag = false;
 
-circle_tool = document.getElementById("circle_tool");
-circle_tool_isSelected = false;
-drawCircle_isSelected = false;
+var circle_tool = document.getElementById("circle_tool");
+var circle_tool_isSelected = false;
+var drawCircle_isSelected = false;
 
-square_tool = document.getElementById("square_tool");
-square_tool_isSelected = false;
-drawSquare_isSelected = false;
+var square_tool = document.getElementById( "square_tool" );
+var square_tool_isSelected = false;
+var drawSquare_isSelected = false;
 
-ellipse_tool = document.getElementById("ellipse_tool");
-ellipse_tool_isSelected = false;
-drawEllipse_isSelected = false;
+var ellipse_tool = document.getElementById( "ellipse_tool" );
+var ellipse_tool_isSelected = false;
+var drawEllipse_isSelected = false;
 
-// poly_tool = document.getElementById("poly_tool");
-// poly_tool_isSelected = false;
-// drawPoly_isSelected = false;
+// var poly_tool = document.getElementById( "poly_tool" );
+// var poly_tool_isSelected = false;
+// var drawPoly_isSelected = false;
 
-draw_tool = document.getElementById("draw_tool");
-draw_tool_isSelected = false;
+var draw_tool = document.getElementById("draw_tool");
+var draw_tool_isSelected = false;
 
-size_tool = document.getElementById("size_tool");
-size_tool_isSelected = false;
+var size_tool = document.getElementById("size_tool");
+var size_tool_isSelected = false;
 
-color_tool = document.getElementById("color_tool");
-color_tool_isSelected = false;
+var color_tool = document.getElementById("color_tool");
+var color_tool_isSelected = false;
 
-move_tool = document.getElementById("move_tool");
-move_tool_isSelected = false;
-drag = false;
+var move_tool = document.getElementById( "move_tool" );
+var move_tool_isSelected = false;
+var drag = false;
 
-remove_tool = document.getElementById("remove_tool");
-remove_tool_isSelected = false;
+var remove_tool = document.getElementById("remove_tool");
+var remove_tool_isSelected = false;
 
-display_color = document.getElementById("display_color");
+var display_color = document.getElementById("display_color");
 
-red_rect = document.getElementById("red_rect");
+var red_rect = document.getElementById("red_rect");
 red_rect.addEventListener("click", update_color);
 
-blue_rect = document.getElementById("blue_rect");
+var blue_rect = document.getElementById("blue_rect");
 blue_rect.addEventListener("click", update_color);
 
-green_rect = document.getElementById("green_rect");
+var green_rect = document.getElementById("green_rect");
 green_rect.addEventListener("click", update_color);
 
-yellow_rect = document.getElementById("yellow_rect");
+var yellow_rect = document.getElementById("yellow_rect");
 yellow_rect.addEventListener("click", update_color);
 
-orange_rect = document.getElementById("orange_rect");
+var orange_rect = document.getElementById("orange_rect");
 orange_rect.addEventListener("click", update_color);
 
-purple_rect = document.getElementById("purple_rect");
+var purple_rect = document.getElementById("purple_rect");
 purple_rect.addEventListener("click", update_color);
 
-turq_rect = document.getElementById("turq_rect");
+var turq_rect = document.getElementById("turq_rect");
 turq_rect.addEventListener("click", update_color);
 
-maroon_rect = document.getElementById("maroon_rect");
+var maroon_rect = document.getElementById("maroon_rect");
 maroon_rect.addEventListener("click", update_color);
 
-cyan_rect = document.getElementById("cyan_rect");
+var cyan_rect = document.getElementById("cyan_rect");
 cyan_rect.addEventListener("click", update_color);
 
-choc_rect = document.getElementById("choc_rect");
+var choc_rect = document.getElementById("choc_rect");
 choc_rect.addEventListener("click", update_color);
 
-lime_rect = document.getElementById("lime_rect");
+var lime_rect = document.getElementById("lime_rect");
 lime_rect.addEventListener("click", update_color);
 
-blvi_rect = document.getElementById("blvi_rect");
+var blvi_rect = document.getElementById("blvi_rect");
 blvi_rect.addEventListener("click", update_color);
 
 circle_tool.addEventListener("click",circlefunction);
