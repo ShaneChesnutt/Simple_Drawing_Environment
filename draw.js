@@ -1,3 +1,81 @@
+/**
+PSEUDO CODE TO START CONVERSATION:
+
+Notes:
+- Shape.js is the base class.
+- Each shape will be constructed and saved in the `shapeRegistry` hashmap.
+- Shapes have unique DOM id (probably use a UUID library).
+- Unfortunately the classes can't be entirely data centric because the real
+  member values are stored on the DOM. For instance having `this.x` on a shape
+  instance is great from a design perspective, but merely setting this doesn't
+  cause the DOM to update the `x` position.
+- Classes extending Shape must implement their own event listeners.
+- It is ideal to use Browserify for `require(...)` and Proxyquire for unit testing.
+
+// ./utils/Inherit.js
+function inherit(proto) {
+  function F() {};
+  F.prototype = proto;
+  return new F;
+}
+
+// ./shapes/Shape.js
+function Shape(x, y, w, h, fill, stroke) {
+  this.elementID      = genId();
+  this.renderSize     = function(w, h) { // update svg on DOM };
+  this.renderStroke   = function(stroke) { // update svg on DOM };
+  this.renderFill     = function(fill) { // update svg on DOM };
+  this.renderLocation = function(x, y) { // update svg on DOM };
+  this.destruct       = function() { // remove svg on DOM };
+  this.construct      = function(id, x, y, w, h, fill, stroke) { // call internal code/create element };
+  this.construct(id, x, y, w, h, fill, stroke);
+}
+
+// ./shapes/Circle.js
+function Circle(x, y, r, w, h, fill, stroke) {
+  this.construct = function(x, y, r, w, h, fill, stroke) {  }
+
+  // More overrides here...
+}
+
+// ./shapes/Rectangle.js
+function Rectangle(x, y, w, h, fill, stroke) {
+
+}
+
+// ./shapes/Ellipse.js
+function Ellipse(x, y, xr, yr, fill, stroke) {
+  this.construct = function(x, y, xr, yr, fill, stroke) {  }
+
+  // More overrides here...
+}
+
+// ./shapes/Line.js
+function Line(x1, y1, x2, y2, fill, stroke) {
+  this.construct = function(x1, y1, x2, y2, fill, stroke) {  }
+
+  // More overrides here...
+}
+
+// ./Application.js
+var shapeRegistry = [];
+var currentTool   = null;
+var selectedColor = null;
+
+function _onDrawableAreaClick(event) {
+  // Create new shape or identify existing shape and apply
+  // new color / invoke specific callback.
+}
+
+function _onToolSelectionClick(event) {}
+
+function _onColorSelectionClick(event) {}
+
+function init() {
+  // bind drawable area handlers.
+}
+*/
+
 canvas = document.getElementById( 'canvas' );
 var Shapes = [];
 
