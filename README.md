@@ -1,18 +1,34 @@
-Simple Drawing Environment
-----------------------------------
-Release 1.0.0
+# SVG Tutorial
 
-This project was made for my Cpsc 337 class (Intro to Web Graphics)
+This is a drawing interface that allows you to draw and edit basic shapes (circles, ellipses, and squares) in SVG. By following the tutorial below, you will learn:
 
-This web application is written in javascript/SVG. The UI is written in SVG and the controllers are written in javascript.
+- SVG graphic tags
+- SVG graphic APIs
+- How to set up element events
+- How to modify elements
+- How to manage many SVG elements on the page
+- Best practices
 
-Basics -
-This is a drawing interface that allows you to draw and edit basic shapes (circles, ellipses, and squares) in svg.
+## TUTORIAL
 
-The way the size tool works is to click on a drawn shape and then hover over one of the squares produced by the tool and use your mouse wheel to resize.
+1. Open up `index.html` in your (modern) internet browser.
 
-**TODO:**
--------------------------
-* Clean up javascript code base
-* Investigate html5 svg tag
-* Create a feature list to add
+_TODO_
+
+## TODO
+
+- Total refactor
+- Implement unit tests
+- Clean up colors and make viewport reasonably flexible
+- Write up tutorial
+- Rename repo to `svg-tutorial`
+- Set up Travis CI
+
+## AUTHORS
+
+- Shane Chesnutt
+- Matthew Vita
+
+## LICENSE
+
+MIT
