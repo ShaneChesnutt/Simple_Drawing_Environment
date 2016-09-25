@@ -164,8 +164,8 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
 
   function _onMouseMove(event) {
     if (_getIsClicked()){
-      _setX(event.clientX);
-      _setY(event.clientY);
+      _setX(event.clientX - _width/2);
+      _setY(event.clientY - _height/2);
     }
   }
 }
