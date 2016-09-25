@@ -1,0 +1,9 @@
+body {
+  display: flex;
+}
+
+.drawingarea-controls {
+  flex-grow: 1;
+  width: 200px;
+  background-color: #999; 
+}
