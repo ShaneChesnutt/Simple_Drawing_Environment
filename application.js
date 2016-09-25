@@ -10,11 +10,11 @@ setTimeout(function() {
   test.setFill('blue');
   test.setStroke('green');
   test.setR(70);
-  
+
   rect.setFill('honeydew');
   rect.setStroke('lightblue');
   rect.setStrokeWidth(20);
-  
+
   ellipse.setFill('lawngreen');
   ellipse.setStroke('goldenrod');
   ellipse.setStrokeWidth(10);
@@ -24,7 +24,7 @@ setTimeout(function() {
   test.destruct();
   rect.destruct();
   ellipse.destruct();
-}, 5000);
+}, 10000);
 
 var drawingArea = document.getElementById('drawingArea');
 drawingArea.appendChild(test.getElement());
