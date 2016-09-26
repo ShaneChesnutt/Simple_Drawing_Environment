@@ -5,16 +5,19 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
   </head>
-  <body style="height: 100vh; margin: 0; overflow:hidden">
-    <svg width="100%" height="100%">
-      <g id="drawingArea"></g>
+  <body style="height: 100vh; width: 100%; margin: 0; overflow:hidden">
+    <svg width="100%" height="100%" id="svg-area">
+      <g id="drawing-area"></g>
       <rect id="canvas" x="0%" y="0%" width="100%" height="100%" stroke="black" stroke-width="3" fill="none"></rect>
     </svg>
-    <div class="drawingarea-controls"></div>
+    <div class="drawingarea-controls">
+    </div>
+    <script src="util/underscore.js"></script>
     <script src="util/guid.js"></script>
     <script src="shape/circle.js"></script>
     <script src="shape/rectangle.js"></script>
     <script src="shape/ellipse.js"></script>
-    <script src="application.js"></script>
+    <script src="controls.js"></script>
+    <script src="manager.js"></script>
   </body>
 </html>
