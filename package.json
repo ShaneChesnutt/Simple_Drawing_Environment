@@ -1,0 +1,34 @@
+{
+  "name": "practical-svg-walkthrough",
+  "version": "1.0.0",
+  "description": "Practical SVG Walkthrough",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"need to setup karma/jasmine :)\" && exit 1",
+    "build": "babel src -d src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShaneChesnutt/Simple_Drawing_Environment.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShaneChesnutt/Simple_Drawing_Environment/issues"
+  },
+  "homepage": "https://github.com/ShaneChesnutt/Simple_Drawing_Environment",
+  "dependencies": {
+    "guid": "0.0.12",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}

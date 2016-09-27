@@ -1,13 +1,16 @@
-function Circle(x, y, r, fill, stroke, strokeWidth) {
+var Guid = require('guid');
+
+function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
   var vm           = this;
   var _element     = null;
+  var _elementId   = null;
   var _x           = null;
   var _y           = null;
-  var _r           = null;
+  var _radiusX     = null;
+  var _radiusY     = null;
   var _fill        = null;
   var _stroke      = null;
   var _strokeWidth = null;
-  var _elementId   = null;
   var _isClicked   = false;
 
   vm.construct      = _construct;
@@ -18,25 +21,29 @@ function Circle(x, y, r, fill, stroke, strokeWidth) {
   vm.setX           = _setX;
   vm.getY           = _getY;
   vm.setY           = _setY;
-  vm.getR           = _getR;
-  vm.setR           = _setR;
+  vm.getRadiusX     = _getRadiusX;
+  vm.setRadiusX     = _setRadiusX;
+  vm.getRadiusY     = _getRadiusY;
+  vm.setRadiusY     = _setRadiusY;
   vm.getFill        = _getFill;
   vm.setFill        = _setFill;
   vm.getStroke      = _getStroke;
   vm.setStroke      = _setStroke;
-  vm.setStrokeWidth = _setStrokeWidth;
   vm.getStrokeWidth = _getStrokeWidth;
+  vm.setStrokeWidth = _setStrokeWidth;
 
   vm.construct();
 
   function _construct() {
-    _elementId = guid();
-    _element = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    _elementId = Guid.raw();
+    _element   = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+
     _element.setAttribute('id', _elementId);
 
     _setX(x);
     _setY(y);
-    _setR(r);
+    _setRadiusX(radiusX);
+    _setRadiusY(radiusY);
     _setFill(fill);
     _setStroke(stroke);
     _setStrokeWidth(strokeWidth);
@@ -48,13 +55,14 @@ function Circle(x, y, r, fill, stroke, strokeWidth) {
     _unRegisterEventHandlers();
     _element.remove();
     _element     = null;
+    _elementId   = null;
     _x           = null;
     _y           = null;
-    _r           = null;
+    _radiusX     = null;
+    _radiusY     = null;
     _fill        = null;
     _stroke      = null;
     _strokeWidth = null;
-    _elementId   = null;
   }
 
   function _getElement() {
@@ -83,13 +91,22 @@ function Circle(x, y, r, fill, stroke, strokeWidth) {
     _element.setAttribute('cy', y);
   }
 
-  function _getR() {
-    return _r;
+  function _getRadiusX() {
+    return _radiusX;
   }
 
-  function _setR(r) {
-    _r = r;
-    _element.setAttribute('r', _r);
+  function _setRadiusX(radiusX) {
+    _radiusX = radiusX;
+    _element.setAttribute('rx', radiusX);
+  }
+
+  function _getRadiusY() {
+    return _radiusY;
+  }
+
+  function _setRadiusY(radiusY) {
+    _radiusY = radiusY;
+    _element.setAttribute('ry', radiusY);
   }
 
   function _getFill() {
@@ -98,7 +115,7 @@ function Circle(x, y, r, fill, stroke, strokeWidth) {
 
   function _setFill(fill) {
     _fill = fill;
-    _element.setAttribute('fill', _fill);
+    _element.setAttribute('fill', fill);
   }
 
   function _getStroke() {
@@ -107,16 +124,16 @@ function Circle(x, y, r, fill, stroke, strokeWidth) {
 
   function _setStroke(stroke) {
     _stroke = stroke;
-    _element.setAttribute('stroke', _stroke);
-  }
-
-  function _setStrokeWidth(strokeWidth) {
-    _strokeWidth = strokeWidth;
-    _element.setAttribute('stroke-width', _strokeWidth);
+    _element.setAttribute('stroke', stroke);
   }
 
   function _getStrokeWidth() {
     return _strokeWidth;
+  }
+
+  function _setStrokeWidth(strokeWidth) {
+    _strokeWidth = strokeWidth;
+    _element.setAttribute('stroke-width', strokeWidth);
   }
 
   function _setIsClicked(val) {
@@ -154,3 +171,5 @@ function Circle(x, y, r, fill, stroke, strokeWidth) {
     }
   }
 }
+
+module.exports = Ellipse;

@@ -1,14 +1,15 @@
-function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
+var Guid = require('guid');
+
+function Circle(x, y, r, fill, stroke, strokeWidth) {
   var vm           = this;
   var _element     = null;
-  var _elementId   = null;
   var _x           = null;
   var _y           = null;
-  var _height      = null;
-  var _width       = null;
+  var _r           = null;
   var _fill        = null;
   var _stroke      = null;
   var _strokeWidth = null;
+  var _elementId   = null;
   var _isClicked   = false;
 
   vm.construct      = _construct;
@@ -19,29 +20,25 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
   vm.setX           = _setX;
   vm.getY           = _getY;
   vm.setY           = _setY;
-  vm.getHeight      = _getHeight;
-  vm.setHeight      = _setHeight;
-  vm.getWidth       = _getWidth;
-  vm.setWidth       = _setWidth;
+  vm.getR           = _getR;
+  vm.setR           = _setR;
   vm.getFill        = _getFill;
   vm.setFill        = _setFill;
   vm.getStroke      = _getStroke;
   vm.setStroke      = _setStroke;
-  vm.getStrokeWidth = _getStrokeWidth;
   vm.setStrokeWidth = _setStrokeWidth;
+  vm.getStrokeWidth = _getStrokeWidth;
 
   vm.construct();
 
   function _construct() {
-    _elementId = guid();
-    _element   = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-
+    _elementId = Guid.raw();
+    _element = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     _element.setAttribute('id', _elementId);
 
     _setX(x);
     _setY(y);
-    _setHeight(height);
-    _setWidth(width);
+    _setR(r);
     _setFill(fill);
     _setStroke(stroke);
     _setStrokeWidth(strokeWidth);
@@ -53,14 +50,13 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
     _unRegisterEventHandlers();
     _element.remove();
     _element     = null;
-    _elementId   = null;
     _x           = null;
     _y           = null;
-    _height      = null;
-    _width       = null;
+    _r           = null;
     _fill        = null;
     _stroke      = null;
     _strokeWidth = null;
+    _elementId   = null;
   }
 
   function _getElement() {
@@ -77,7 +73,7 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
 
   function _setX(x) {
     _x = x;
-    _element.setAttribute('x', x);
+    _element.setAttribute('cx', x);
   }
 
   function _getY() {
@@ -86,25 +82,16 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
 
   function _setY(y) {
     _y = y;
-    _element.setAttribute('y', y);
+    _element.setAttribute('cy', y);
   }
 
-  function _getWidth() {
-    return _width;
+  function _getR() {
+    return _r;
   }
 
-  function _setWidth(width) {
-    _width = width;
-    _element.setAttribute('width', width);
-  }
-
-  function _getHeight() {
-    return _height;
-  }
-
-  function _setHeight(height) {
-    _height = height;
-    _element.setAttribute('height', height);
+  function _setR(r) {
+    _r = r;
+    _element.setAttribute('r', _r);
   }
 
   function _getFill() {
@@ -113,7 +100,7 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
 
   function _setFill(fill) {
     _fill = fill;
-    _element.setAttribute('fill', fill);
+    _element.setAttribute('fill', _fill);
   }
 
   function _getStroke() {
@@ -122,16 +109,16 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
 
   function _setStroke(stroke) {
     _stroke = stroke;
-    _element.setAttribute('stroke', stroke);
-  }
-
-  function _getStrokeWidth() {
-    return _strokeWidth;
+    _element.setAttribute('stroke', _stroke);
   }
 
   function _setStrokeWidth(strokeWidth) {
     _strokeWidth = strokeWidth;
-    _element.setAttribute('stroke-width', strokeWidth);
+    _element.setAttribute('stroke-width', _strokeWidth);
+  }
+
+  function _getStrokeWidth() {
+    return _strokeWidth;
   }
 
   function _setIsClicked(val) {
@@ -164,8 +151,10 @@ function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
 
   function _onMouseMove(event) {
     if (_getIsClicked()){
-      _setX(event.clientX - _width/2);
-      _setY(event.clientY - _height/2);
+      _setX(event.clientX);
+      _setY(event.clientY);
     }
   }
 }
+
+module.exports = Circle;

@@ -1,11 +1,13 @@
-function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
+var Guid = require('guid');
+
+function Rectangle(x, y, height, width, fill, stroke, strokeWidth) {
   var vm           = this;
   var _element     = null;
   var _elementId   = null;
   var _x           = null;
   var _y           = null;
-  var _radiusX     = null;
-  var _radiusY     = null;
+  var _height      = null;
+  var _width       = null;
   var _fill        = null;
   var _stroke      = null;
   var _strokeWidth = null;
@@ -19,10 +21,10 @@ function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
   vm.setX           = _setX;
   vm.getY           = _getY;
   vm.setY           = _setY;
-  vm.getRadiusX     = _getRadiusX;
-  vm.setRadiusX     = _setRadiusX;
-  vm.getRadiusY     = _getRadiusY;
-  vm.setRadiusY     = _setRadiusY;
+  vm.getHeight      = _getHeight;
+  vm.setHeight      = _setHeight;
+  vm.getWidth       = _getWidth;
+  vm.setWidth       = _setWidth;
   vm.getFill        = _getFill;
   vm.setFill        = _setFill;
   vm.getStroke      = _getStroke;
@@ -33,15 +35,15 @@ function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
   vm.construct();
 
   function _construct() {
-    _elementId = guid();
-    _element   = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+    _elementId = Guid.raw();
+    _element   = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
     _element.setAttribute('id', _elementId);
 
     _setX(x);
     _setY(y);
-    _setRadiusX(radiusX);
-    _setRadiusY(radiusY);
+    _setHeight(height);
+    _setWidth(width);
     _setFill(fill);
     _setStroke(stroke);
     _setStrokeWidth(strokeWidth);
@@ -56,8 +58,8 @@ function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
     _elementId   = null;
     _x           = null;
     _y           = null;
-    _radiusX     = null;
-    _radiusY     = null;
+    _height      = null;
+    _width       = null;
     _fill        = null;
     _stroke      = null;
     _strokeWidth = null;
@@ -77,7 +79,7 @@ function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
 
   function _setX(x) {
     _x = x;
-    _element.setAttribute('cx', x);
+    _element.setAttribute('x', x);
   }
 
   function _getY() {
@@ -86,25 +88,25 @@ function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
 
   function _setY(y) {
     _y = y;
-    _element.setAttribute('cy', y);
+    _element.setAttribute('y', y);
   }
 
-  function _getRadiusX() {
-    return _radiusX;
+  function _getWidth() {
+    return _width;
   }
 
-  function _setRadiusX(radiusX) {
-    _radiusX = radiusX;
-    _element.setAttribute('rx', radiusX);
+  function _setWidth(width) {
+    _width = width;
+    _element.setAttribute('width', width);
   }
 
-  function _getRadiusY() {
-    return _radiusY;
+  function _getHeight() {
+    return _height;
   }
 
-  function _setRadiusY(radiusY) {
-    _radiusY = radiusY;
-    _element.setAttribute('ry', radiusY);
+  function _setHeight(height) {
+    _height = height;
+    _element.setAttribute('height', height);
   }
 
   function _getFill() {
@@ -164,8 +166,10 @@ function Ellipse(x, y, radiusX, radiusY, fill, stroke, strokeWidth) {
 
   function _onMouseMove(event) {
     if (_getIsClicked()){
-      _setX(event.clientX);
-      _setY(event.clientY);
+      _setX(event.clientX - _width/2);
+      _setY(event.clientY - _height/2);
     }
   }
 }
+
+module.exports = Rectangle;
