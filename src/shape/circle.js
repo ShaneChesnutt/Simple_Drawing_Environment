@@ -1,160 +1,141 @@
-var Guid = require('guid');
+import Guid from 'guid';
 
-function Circle(x, y, r, fill, stroke, strokeWidth) {
-  var vm           = this;
-  var _element     = null;
-  var _x           = null;
-  var _y           = null;
-  var _r           = null;
-  var _fill        = null;
-  var _stroke      = null;
-  var _strokeWidth = null;
-  var _elementId   = null;
-  var _isClicked   = false;
+class Circle {
+  constructor(x, y, r, fill, stroke, strokeWidth) {
+    this.element     = null;
+    this.elementId   = null;
+    this.x           = null;
+    this.y           = null;
+    this.r           = null;
+    this.fill        = null;
+    this.stroke      = null;
+    this.strokeWidth = null;
+    this.elementId   = null;
+    this.isClicked   = false;
 
-  vm.construct      = _construct;
-  vm.destruct       = _destruct;
-  vm.getElement     = _getElement;
-  vm.getElementId   = _getElementId;
-  vm.getX           = _getX;
-  vm.setX           = _setX;
-  vm.getY           = _getY;
-  vm.setY           = _setY;
-  vm.getR           = _getR;
-  vm.setR           = _setR;
-  vm.getFill        = _getFill;
-  vm.setFill        = _setFill;
-  vm.getStroke      = _getStroke;
-  vm.setStroke      = _setStroke;
-  vm.setStrokeWidth = _setStrokeWidth;
-  vm.getStrokeWidth = _getStrokeWidth;
+    this.elementId = Guid.raw();
+    this.element = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    this.element.setAttribute('id', this.elementId);
 
-  vm.construct();
+    this.setX(x);
+    this.setY(y);
+    this.setR(r);
+    this.setFill(fill);
+    this.setStroke(stroke);
+    this.setStrokeWidth(strokeWidth);
 
-  function _construct() {
-    _elementId = Guid.raw();
-    _element = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    _element.setAttribute('id', _elementId);
-
-    _setX(x);
-    _setY(y);
-    _setR(r);
-    _setFill(fill);
-    _setStroke(stroke);
-    _setStrokeWidth(strokeWidth);
-
-    _registerEventHandlers();
+    this.registerEventHandlers();
   }
 
-  function _destruct() {
-    _unRegisterEventHandlers();
-    _element.remove();
-    _element     = null;
-    _x           = null;
-    _y           = null;
-    _r           = null;
-    _fill        = null;
-    _stroke      = null;
-    _strokeWidth = null;
-    _elementId   = null;
+  destruct() {
+    this.unRegisterEventHandlers();
+    this.element.remove();
+    this.element     = null;
+    this.x           = null;
+    this.y           = null;
+    this.r           = null;
+    this.fill        = null;
+    this.stroke      = null;
+    this.strokeWidth = null;
+    this.elementId   = null;
   }
 
-  function _getElement() {
-    return _element;
+  getElement() {
+    return this.element;
   }
 
-  function _getElementId() {
-    return _elementId;
+  getElementId() {
+    return this.elementId;
   }
 
-  function _getX() {
-    return _x;
+  getX() {
+    return this.x;
   }
 
-  function _setX(x) {
-    _x = x;
-    _element.setAttribute('cx', x);
+  setX(x) {
+    this.x = x;
+    this.element.setAttribute('cx', x);
   }
 
-  function _getY() {
-    return _y;
+  getY() {
+    return this.y;
   }
 
-  function _setY(y) {
-    _y = y;
-    _element.setAttribute('cy', y);
+  setY(y) {
+    this.y = y;
+    this.element.setAttribute('cy', y);
   }
 
-  function _getR() {
-    return _r;
+  getR() {
+    return this.r;
   }
 
-  function _setR(r) {
-    _r = r;
-    _element.setAttribute('r', _r);
+  setR(r) {
+    this.r = r;
+    this.element.setAttribute('r', this.r);
   }
 
-  function _getFill() {
-    return _fill;
+  getFill() {
+    return this.fill;
   }
 
-  function _setFill(fill) {
-    _fill = fill;
-    _element.setAttribute('fill', _fill);
+  setFill(fill) {
+    this.fill = fill;
+    this.element.setAttribute('fill', this.fill);
   }
 
-  function _getStroke() {
-    return _stroke;
+  getStroke() {
+    return this.stroke;
   }
 
-  function _setStroke(stroke) {
-    _stroke = stroke;
-    _element.setAttribute('stroke', _stroke);
+  setStroke(stroke) {
+    this.stroke = stroke;
+    this.element.setAttribute('stroke', this.stroke);
   }
 
-  function _setStrokeWidth(strokeWidth) {
-    _strokeWidth = strokeWidth;
-    _element.setAttribute('stroke-width', _strokeWidth);
+  setStrokeWidth(strokeWidth) {
+    this.strokeWidth = strokeWidth;
+    this.element.setAttribute('stroke-width', this.strokeWidth);
   }
 
-  function _getStrokeWidth() {
-    return _strokeWidth;
+  getStrokeWidth() {
+    return this.strokeWidth;
   }
 
-  function _setIsClicked(val) {
-    _isClicked = val;
+  setIsClicked(val) {
+    this.isClicked = val;
   }
 
-  function _getIsClicked() {
-    return _isClicked;
+  getIsClicked() {
+    return this.isClicked;
   }
 
-  function _registerEventHandlers() {
-    _element.addEventListener('mousedown', _onMouseDown);
-    _element.addEventListener('mouseup', _onMouseUp);
-    _element.addEventListener('mousemove', _onMouseMove);
+  registerEventHandlers() {
+    this.element.addEventListener('mousedown', this.onMouseDown);
+    this.element.addEventListener('mouseup', this.onMouseUp);
+    this.element.addEventListener('mousemove', this.onMouseMove);
   }
 
-  function _unRegisterEventHandlers() {
-    _element.removeEventListener('mousedown', _onMouseDown);
-    _element.removeEventListener('mouseup', _onMouseUp);
-    _element.removeEventListener('mousemove', _onMouseMove);
+  unRegisterEventHandlers() {
+    this.element.removeEventListener('mousedown', this.onMouseDown);
+    this.element.removeEventListener('mouseup', this.onMouseUp);
+    this.element.removeEventListener('mousemove', this.onMouseMove);
   }
 
-  function _onMouseDown() {
-    _setIsClicked(true);
+  onMouseDown() {
+    this.setIsClicked(true);
   }
 
-  function _onMouseUp() {
-    _setIsClicked(false);
+  onMouseUp() {
+    this.setIsClicked(false);
   }
 
-  function _onMouseMove(event) {
-    if (_getIsClicked()){
+  onMouseMove(event) {
+    if (this.getIsClicked()){
       _setX(event.clientX);
       _setY(event.clientY);
     }
   }
 }
 
-module.exports = Circle;
+export {Circle};

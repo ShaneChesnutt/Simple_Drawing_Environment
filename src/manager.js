@@ -1,6 +1,6 @@
-var _ = require('underscore');
+import _ from 'underscore';
+import {Circle} from './shape/circle';
 var Controls = require('./controls');
-var Circle = require('./shape/circle');
 var Rectangle = require('./shape/rectangle');
 var Ellipse = require('./shape/ellipse');
 

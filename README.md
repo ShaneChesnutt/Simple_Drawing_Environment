@@ -11,7 +11,8 @@ This is a drawing interface that allows you to draw and edit basic shapes (circl
 
 ## TUTORIAL
 
-1. Open up `index.html` in your (modern) internet browser.
+1. `$ npm install && grunt`
+2. Open up `index.html` in your (modern) internet browser.
 
 _TODO_
 
